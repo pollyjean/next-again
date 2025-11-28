@@ -1,3 +1,4 @@
-export default function Banana() {
-    return <h1>Hello NextJS for Banana</h1>
+
+export default async function Banana() {
+    return <section>Banana</section>
 }

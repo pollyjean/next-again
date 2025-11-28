@@ -1,11 +1,25 @@
+import Link from "next/link";
+
+export const metadata = {
+    title: 'NextJS Again',
+    description: 'NextJS Again App',
+}
+
 export default function RootLayout({
     children,
 }: {
     children: React.ReactNode;
 }) {
     return (
-        <html>
-            <body>{children}</body>
+        <html lang="en">
+            <body>
+                <header>
+                    <h1>NextJS Again</h1>
+                </header>
+                <main>
+                    {children}
+                </main>
+            </body>
         </html>
     )
 }
