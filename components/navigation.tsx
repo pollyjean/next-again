@@ -10,13 +10,13 @@ export default function Navigation() {
     return (
         <nav className="flex">
             <ul className="flex">
-                <li className="px-2"><Link href="/">Home{path === '/' ? ' (current)' : ''}</Link></li>
-                <li className="px-2"><Link href="/about-us">About{path === '/about-us' ? ' (current)' : ''}</Link></li>
-                <li className="px-2"><Link href="/about-us/company">Company{path === '/about-us/company' ? ' (current)' : ''}</Link></li>
-                <li className="px-2"><Link href="/about-us/company/story">Story{path === '/about-us/company/story' ? ' (current)' : ''}</Link></li>
-                <li className="px-2"><Link href="/about-us/company/map">Map{path === '/about-us/company/map' ? ' (current)' : ''}</Link></li>
+                <li className="px-2"><Link href="/" onClick={() => setCount(count + 1)}>Home{path === '/' ? ' 🔥' : ''}</Link></li>
+                <li className="px-2"><Link href="/about-us" onClick={() => setCount(count + 1)}>About{path === '/about-us' ? ' 🔥' : ''}</Link></li>
+                <li className="px-2 text-gray-400 cursor-not-allowed"><span>Company{path === '/about-us/company' ? ' 🔥' : ''}</span></li>
+                <li className="px-2"><Link href="/about-us/company/story" onClick={() => setCount(count + 1)}>Story{path === '/about-us/company/story' ? ' 🔥' : ''}</Link></li>
+                <li className="px-2"><Link href="/about-us/company/map" onClick={() => setCount(count + 1)}>Map{path === '/about-us/company/map' ? ' 🔥' : ''}</Link></li>
             </ul>
-            <button className="border border-gray-300 rounded px-1 shadow-md hover:shadow-sm transition-all-faster cursor-pointer" onClick={() => setCount(count + 1)}>Count: {count}</button>
+            <button className="border border-gray-300 rounded-md px-2">Click Count: {count}</button>
         </nav>
     )
 }

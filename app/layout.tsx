@@ -1,9 +1,14 @@
 import Navigation from "../components/navigation";
 import "./globals.css";
+import { Metadata } from "next";
 
-export const metadata = {
-    title: 'NextJS Again',
-    description: 'NextJS Again App',
+// metadata other fields example : https://nextjs.org/docs/app/api-reference/functions/generate-metadata#other-fields
+export const metadata: Metadata = {
+    title: {
+        template: "%s | NextJS App",
+        default: "NextJS App"
+    },
+    description: 'NextJS generated Website',
 }
 
 export default function RootLayout({
