@@ -1,4 +1,5 @@
-import Link from "next/link";
+import Navigation from "../components/navigation";
+import "./globals.css";
 
 export const metadata = {
     title: 'NextJS Again',
@@ -19,6 +20,9 @@ export default function RootLayout({
                 <main>
                     {children}
                 </main>
+                <footer>
+                    <Navigation />
+                </footer>
             </body>
         </html>
     )
