@@ -1,19 +1,58 @@
-import Link from "next/link";
+'use client';
 
-export const metadata = {
-    title: 'Banana',
+import { useEffect, useState } from "react";
+
+const apiHeaders = {
+    'apikey': '5F5XB722a8HlXkQQqstx7m335eG1VNgp'
 }
 
-export default async function Banana() {
-    return <section>Banana
+const apiURL = 'https://api.apilayer.com/app_store/collections';
+const apiMethod = 'GET';
+const apiRedirect = 'follow';
 
-        <ul className="flex justify-around">
-            <li><Link href="/app/1">Apple</Link></li>
-            <li><Link href="/app/1?lang=ko">Apple (ko)</Link></li>
-            <li><Link href="/app/1?lang=en">Apple (en)</Link></li>
-            <li><Link href="/app/1?lang=ja">Apple (ja)</Link></li>
-            <li><Link href="/app/1?lang=fr">Apple (fr)</Link></li>
-            <li><Link href="/app/1?lang=zh">Apple (zh)</Link></li>
+interface requestOptionProps {
+    method: string;
+    redirect: RequestRedirect;
+    headers: {
+        [key: string]: string;
+    };
+}
+
+const requestOptions: requestOptionProps = {
+    method: apiMethod,
+    redirect: apiRedirect as RequestRedirect,
+    headers: apiHeaders
+};
+
+export default function Home() {
+    const [loading, setLoading] = useState(true);
+    const [collections, setCollections] = useState<string[]>();
+    const getCollections = async () => {
+        const response = await fetch(apiURL, requestOptions)
+            .then(response => response.json())
+            .catch(error => console.log('error', error));
+        setCollections(response);
+        setLoading(false);
+    }
+    useEffect(() => {
+        getCollections();
+    }, []);
+
+    console.log(collections);
+
+    return <main>
+        <header>
+            <h1>Home</h1>
+        </header>
+        <p>Home Page</p>
+        <ul>
+            {loading ? (
+                <li>Loading...</li>
+            ) : (
+                collections?.map((collection: string, index: number) => (
+                    <li key={index}>{collection}</li>
+                ))
+            )}
         </ul>
-    </section>
+    </main>
 }
