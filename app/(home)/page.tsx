@@ -1,6 +1,6 @@
-'use client';
-
-import { useEffect, useState } from "react";
+export const metadata = {
+    title: 'Home',
+}
 
 const apiHeaders = {
     'apikey': '5F5XB722a8HlXkQQqstx7m335eG1VNgp'
@@ -24,35 +24,27 @@ const requestOptions: requestOptionProps = {
     headers: apiHeaders
 };
 
-export default function Home() {
-    const [loading, setLoading] = useState(true);
-    const [collections, setCollections] = useState<string[]>();
-    const getCollections = async () => {
-        const response = await fetch(apiURL, requestOptions)
-            .then(response => response.json())
-            .catch(error => console.log('error', error));
-        setCollections(response);
-        setLoading(false);
-    }
-    useEffect(() => {
-        getCollections();
-    }, []);
+async function getCollections() {
+    // TEST : Loading delay
+    // await new Promise((promise) => setTimeout(promise, 1000));
+    const response = await fetch(apiURL, requestOptions)
+        .then(response => response.json())
+        .catch(error => console.log('error', error));
+    return response;
+}
 
-    console.log(collections);
+export default async function Home() {
+    const collections: string[] = await getCollections();
 
     return <main>
         <header>
-            <h1>Home</h1>
+            <h1>{metadata.title}</h1>
         </header>
         <p>Home Page</p>
         <ul>
-            {loading ? (
-                <li>Loading...</li>
-            ) : (
-                collections?.map((collection: string, index: number) => (
-                    <li key={index}>{collection}</li>
-                ))
-            )}
+            {collections.map((collection: string, index: number) => (
+                <li key={index}>{collection}</li>
+            ))}
         </ul>
     </main>
 }
