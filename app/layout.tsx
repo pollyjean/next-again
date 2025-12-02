@@ -1,15 +1,16 @@
 import Navigation from "../components/navigation";
 import "./globals.css";
+import { SITE_NAME, SITE_DESCRIPTION } from "@/lib/constant";
 import { Metadata } from "next";
 import Link from "next/link";
 
 // metadata other fields example : https://nextjs.org/docs/app/api-reference/functions/generate-metadata#other-fields
 export const metadata: Metadata = {
     title: {
-        template: "%s | NextJS App",
-        default: "NextJS App"
+        template: '%s | ' + SITE_NAME,
+        default: SITE_NAME,
     },
-    description: 'NextJS generated Website',
+    description: SITE_DESCRIPTION,
 }
 
 export default function RootLayout({
@@ -21,7 +22,7 @@ export default function RootLayout({
         <html lang="en">
             <body>
                 <header>
-                    <h1>NextJS Again</h1>
+                    <h1>{SITE_NAME}</h1>
                 </header>
                 <main>
                     {children}

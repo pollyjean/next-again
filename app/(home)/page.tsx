@@ -1,49 +1,29 @@
+import Link from 'next/link';
+import { API_URL } from "@/lib/constant";
+
 export const metadata = {
-    title: 'Home',
+    title: 'Home'
 }
 
-const apiHeaders = {
-    'apikey': '5F5XB722a8HlXkQQqstx7m335eG1VNgp'
-}
-
-const apiURL = 'https://api.apilayer.com/app_store/collections';
-const apiMethod = 'GET';
-const apiRedirect = 'follow';
-
-interface requestOptionProps {
-    method: string;
-    redirect: RequestRedirect;
-    headers: {
-        [key: string]: string;
-    };
-}
-
-const requestOptions: requestOptionProps = {
-    method: apiMethod,
-    redirect: apiRedirect as RequestRedirect,
-    headers: apiHeaders
-};
-
-async function getCollections() {
-    // TEST : Loading delay
-    // await new Promise((promise) => setTimeout(promise, 1000));
-    const response = await fetch(apiURL, requestOptions)
+async function getListApps(query: string, country?: string) {
+    const response = await fetch(`${API_URL}?q=${query ? query : '*'}`)
         .then(response => response.json())
         .catch(error => console.log('error', error));
     return response;
 }
 
 export default async function Home() {
-    const collections: string[] = await getCollections();
-
+    const allApps = await getListApps('*');
     return <main>
         <header>
             <h1>{metadata.title}</h1>
         </header>
         <p>Home Page</p>
         <ul>
-            {collections.map((collection: string, index: number) => (
-                <li key={index}>{collection}</li>
+            {allApps.map((item: any) => (
+                <li key={item.id}>
+                    <Link href={`/app/${item.id}`}>{item.title}</Link>
+                </li>
             ))}
         </ul>
     </main>
