@@ -20,24 +20,18 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-            <body>
-                <header>
-                    <h1>{SITE_NAME}</h1>
+            <body className="bg-black text-white min-h-screen flex flex-col font-sans">
+                <header className="sticky top-0 z-50 backdrop-blur-md bg-black/50 border-b border-white/10 py-4">
+                    <div className="container mx-auto px-4 flex justify-between items-center">
+                        <h1 className="text-3xl font-bold tracking-tight bg-linear-to-r from-white to-gray-400 bg-clip-text text-transparent">
+                            {SITE_NAME}
+                        </h1>
+                        <Navigation />
+                    </div>
                 </header>
-                <main>
+                <main className="grow container mx-auto px-4 py-8">
                     {children}
                 </main>
-                <footer>
-                    <Navigation />
-                    <ul className="flex justify-around">
-                        <li><Link href="/app/1">Apple</Link></li>
-                        <li><Link href="/app/1?lang=ko">Apple (ko)</Link></li>
-                        <li><Link href="/app/1?lang=en">Apple (en)</Link></li>
-                        <li><Link href="/app/1?lang=ja">Apple (ja)</Link></li>
-                        <li><Link href="/app/1?lang=fr">Apple (fr)</Link></li>
-                        <li><Link href="/app/1?lang=zh">Apple (zh)</Link></li>
-                    </ul>
-                </footer>
             </body>
         </html>
     )

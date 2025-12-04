@@ -1,5 +1,5 @@
 import Video from "@/components/video";
-import AppInfo from "@/components/appInfo";
+import AppDetails from "@/components/appDetails";
 import { API_URL } from "@/lib/constant";
 import { Suspense } from "react";
 
@@ -15,20 +15,17 @@ export async function generateMetadata(props: {
     }
 }
 
-async function fetchAppInfo(id: string) {
-    const response = await fetch(`${API_URL}/${id}/videos`)
-        .then(response => response.json())
-        .catch(error => console.log('error', error));
-    return response;
-}
-
 export default async function App(props:
     {
         params: Promise<{ id: string }>
     }) {
-    const { id } = await props.params;
-    const appInfo = await fetchAppInfo(id);
+    const appInfo = await props.params;
     return <section>
-        <AppInfo {...appInfo} />
+        <Suspense fallback={<div>Loading Information...</div>}>
+            <AppDetails id={appInfo.id} />
+        </Suspense>
+        <Suspense fallback={<div>Loading Video...</div>}>
+            <Video id={appInfo.id} />
+        </Suspense>
     </section>
 }

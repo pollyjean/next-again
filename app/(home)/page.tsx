@@ -17,10 +17,6 @@ async function getListApps() {
 export default async function Home() {
     const allApps = await getListApps();
     return <main>
-        <header>
-            <h1>{metadata.title}</h1>
-        </header>
-        <p>Home Page</p>
         <ul className={styles.ul}>
             {allApps.map((item: any) => (
                 <li key={item.id}>

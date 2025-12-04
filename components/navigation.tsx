@@ -7,17 +7,26 @@ import styles from './navigation.module.css';
 
 export default function Navigation() {
     const path = usePathname();
-    const [count, setCount] = useState(0);
     return (
-        <nav className={styles.nav}>
-            <ul className={styles.ul}>
-                <li className={styles.li}><Link href="/" onClick={() => setCount(count + 1)}>Home{path === '/' ? ' 🔥' : ''}</Link></li>
-                <li className={styles.li}><Link href="/about-us" onClick={() => setCount(count + 1)}>About{path === '/about-us' ? ' 🔥' : ''}</Link></li>
-                <li className={styles.li}><span>Company{path === '/about-us/company' ? ' 🔥' : ''}</span></li>
-                <li className={styles.li}><Link href="/about-us/company/story" onClick={() => setCount(count + 1)}>Story{path === '/about-us/company/story' ? ' 🔥' : ''}</Link></li>
-                <li className={styles.li}><Link href="/about-us/company/map" onClick={() => setCount(count + 1)}>Map{path === '/about-us/company/map' ? ' 🔥' : ''}</Link></li>
+        <nav>
+            <ul className="flex gap-8 bg-white/10 backdrop-blur-lg px-8 py-4 rounded-full border border-white/5 shadow-lg">
+                <li>
+                    <Link
+                        href="/"
+                        className={`text-lg font-medium transition-colors hover:text-white ${path === '/' ? 'text-white' : 'text-gray-400'}`}
+                    >
+                        Home
+                    </Link>
+                </li>
+                <li>
+                    <Link
+                        href="/about-us"
+                        className={`text-lg font-medium transition-colors hover:text-white ${path === '/about-us' ? 'text-white' : 'text-gray-400'}`}
+                    >
+                        About
+                    </Link>
+                </li>
             </ul>
-            <button>Click Count: {count}</button>
         </nav>
     )
 }

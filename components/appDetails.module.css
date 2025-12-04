@@ -1,6 +1,6 @@
-.li {
-    padding: 1rem;
-    position: relative;
+.section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
 }
 
 .picture {
@@ -29,10 +29,6 @@
     position: absolute;
     bottom: 2rem;
     left: 2rem;
-    width: 80%;
+    width: 100%;
     padding: 0.5rem;
-    text-decoration: none;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
