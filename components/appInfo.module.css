@@ -1,0 +1,27 @@
+.li {
+    padding: 1rem;
+    position: relative;
+}
+
+.picture {
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.img {
+    display: block;
+    width: 100%;
+}
+
+.link {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #fff;
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    width: 100%;
+    padding: 0.5rem;
+}

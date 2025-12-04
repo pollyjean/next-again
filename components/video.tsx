@@ -1,15 +1,10 @@
 import { API_URL } from "@/lib/constant";
 
 async function fetchAppVideo(id: string) {
-
-    // TEMP: delay 5 seconds
-    // await new Promise(resolve => setTimeout(resolve, 5000));
     const response = await fetch(`${API_URL}/${id}/videos`)
         .then(response => response.json())
         .then(data => data[0])
         .catch(error => console.log('error', error));
-    // TEMP: throw error
-    // throw new Error('error');
     return response;
 }
 

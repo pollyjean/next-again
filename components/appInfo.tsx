@@ -1,13 +1,17 @@
-import { API_URL } from "@/lib/constant";
+import Link from "next/link";
+import styles from './appInfo.module.css';
 
-async function fetchAppInfo(id: string) {
-    const response = await fetch(`${API_URL}/${id}`)
-        .then(response => response.json())
-        .catch(error => console.log('error', error));
-    return response.title;
+interface IAppInfoProps {
+    title: string;
+    id: string;
+    poster_path: string;
 }
 
-export default async function AppInfo({ id }: { id: string }) {
-    const info = await fetchAppInfo(id);
-    return <h2>{info}</h2>;
+export default async function AppInfo({ title, id, poster_path }: IAppInfoProps) {
+    return <li className={styles.li}>
+        <picture className={styles.picture}>
+            <img className={styles.img} src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt={title} />
+        </picture>
+        <Link className={styles.link} href={`/app/${id}`}>{title}</Link>
+    </li>;
 }
