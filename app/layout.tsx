@@ -26,7 +26,7 @@ export default function RootLayout({
                         <h1 className="text-3xl font-bold tracking-tight">
                             <Link href="/" className="flex items-center gap-2 group">
                                 <div className="absolute inset-0 bg-white/5 blur-2xl -z-10 rounded-full" />
-                                <img src="/assets/images/logo.png" alt={SITE_NAME} className="h-20 w-auto object-contain mix-blend-screen rounded-full drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] transition-transform duration-300" />
+                                <img src="/assets/images/logo.png" alt={SITE_NAME} className="h-20 w-auto object-contain mix-blend-screen rounded-full drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] opacity-80" />
                                 <span className="sr-only">{SITE_NAME}</span>
                             </Link>
                         </h1>

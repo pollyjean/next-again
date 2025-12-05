@@ -7,6 +7,10 @@ import { Skeleton } from "@/components/skeleton";
 export default async function VideoTab({ id }: { id: string }) {
     const content = await getApiData(`${API_URL}/${id}/videos`);
 
+    if (!content || content.length === 0) {
+        return <div className="text-center my-20 text-gray-400 text-lg pb-10">No related videos found.</div>;
+    }
+
     return (
         <div className="max-w-6xl mx-auto my-12 px-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {content.map((video: any) => (

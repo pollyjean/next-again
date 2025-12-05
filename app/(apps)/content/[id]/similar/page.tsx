@@ -7,8 +7,9 @@ export async function generateMetadata(props: {
     params: Promise<{ id: string }>
 }) {
     const { id } = await props.params;
+    const data = await getApiData(`${API_URL}/${id}`);
     return {
-        title: getApiData(`${API_URL}/${id}`),
+        title: data.title,
     }
 }
 

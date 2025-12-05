@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-export default function DetailsTabs({ id }: { id: string }) {
+export default function DetailsTabs({ id, hasSimilar }: { id: string, hasSimilar: boolean }) {
     const pathname = usePathname();
 
     const getActiveTab = (path: string) => {
@@ -16,11 +16,15 @@ export default function DetailsTabs({ id }: { id: string }) {
     const currentTab = getActiveTab(pathname);
 
     const tabs = [
-        { name: "Video", id: "video", href: `/app/${id}` },
-        { name: "Credits", id: "credits", href: `/app/${id}/credits` },
-        { name: "Similar", id: "similar", href: `/app/${id}/similar` },
-        // { name: "Providers", id: "providers", href: `/app/${id}/providers` },
+        { name: "Video", id: "video", href: `/content/${id}` },
+        { name: "Credits", id: "credits", href: `/content/${id}/credits` },
     ];
+
+    if (hasSimilar) {
+        tabs.push({ name: "Similar", id: "similar", href: `/content/${id}/similar` });
+    }
+
+    // { name: "Providers", id: "providers", href: `/content/${id}/providers` },
 
     return (
         <div className="max-w-6xl mx-auto px-4">

@@ -2,6 +2,8 @@ import { Suspense } from "react";
 import AppDetails from "@/components/app-details";
 import DetailsTabs from "@/components/details-tabs";
 import { Skeleton } from "@/components/skeleton";
+import { API_URL } from "@/lib/constant";
+import { getApiData } from "@/lib/getApiData";
 
 export default async function AppLayout({
     children,
@@ -11,6 +13,8 @@ export default async function AppLayout({
     params: Promise<{ id: string }>;
 }) {
     const { id } = await params;
+    const similar = await getApiData(`${API_URL}/${id}/similar`);
+    const hasSimilar = similar.length > 0;
 
     return (
         <section>
@@ -18,7 +22,7 @@ export default async function AppLayout({
                 <AppDetails id={id} />
             </Suspense>
             <Suspense fallback={<div className="max-w-6xl mx-auto px-4"><Skeleton variant="rectangular" className="h-10 w-full mb-8" /></div>}>
-                <DetailsTabs id={id} />
+                <DetailsTabs id={id} hasSimilar={hasSimilar} />
             </Suspense>
             {children}
         </section>
