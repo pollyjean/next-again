@@ -14,14 +14,14 @@ export async function generateMetadata(props: {
 
 import { GridSkeleton } from "@/components/skeleton";
 
-export default async function App(props:
+export default async function CreditsPage(props:
     {
         params: Promise<{ id: string }>
     }) {
     const appInfo = await props.params;
     return (
         <Suspense fallback={<GridSkeleton />}>
-            <TabContent id={appInfo.id} tab={"video"} />
+            <TabContent id={appInfo.id} tab={"credits"} />
         </Suspense>
     );
 }
