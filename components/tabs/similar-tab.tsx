@@ -16,7 +16,7 @@ export default async function SimilarTab({ id }: { id: string }) {
                                 src={movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : "https://via.placeholder.com/500x750?text=No+Poster"}
                                 alt={movie.title}
                                 loading="lazy"
-                                className="w-full h-full object-cover rounded-xl"
+                                className="w-full aspect-2/3 object-cover rounded-xl"
                             />
                             <div className="p-4 bg-gray-900/90 absolute bottom-0 left-0 right-0 transform translate-y-full transition-transform duration-300 opacity-0 group-hover:translate-y-0 group-hover:opacity-100">
                                 <h4 className="font-bold text-white text-sm truncate">{movie.title}</h4>

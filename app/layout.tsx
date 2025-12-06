@@ -13,6 +13,8 @@ export const metadata: Metadata = {
     description: SITE_DESCRIPTION,
 }
 
+import ScrollToTop from "@/components/scroll-to-top";
+
 export default function RootLayout({
     children,
 }: {
@@ -21,6 +23,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className="bg-black text-white min-h-screen flex flex-col font-sans">
+                <ScrollToTop />
                 <header className="fixed top-0 left-0 right-0 z-50 pointer-events-none">
                     <div className="container mx-auto px-4 flex justify-between items-center py-6 pointer-events-auto">
                         <h1 className="text-3xl font-bold tracking-tight">

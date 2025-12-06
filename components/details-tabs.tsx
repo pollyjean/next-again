@@ -18,13 +18,12 @@ export default function DetailsTabs({ id, hasSimilar }: { id: string, hasSimilar
     const tabs = [
         { name: "Video", id: "video", href: `/content/${id}` },
         { name: "Credits", id: "credits", href: `/content/${id}/credits` },
+        { name: "Providers (US)", id: "providers", href: `/content/${id}/providers` },
     ];
 
     if (hasSimilar) {
         tabs.push({ name: "Similar", id: "similar", href: `/content/${id}/similar` });
     }
-
-    // { name: "Providers", id: "providers", href: `/content/${id}/providers` },
 
     return (
         <div className="max-w-6xl mx-auto px-4">

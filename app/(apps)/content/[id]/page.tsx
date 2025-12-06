@@ -12,7 +12,7 @@ export async function generateMetadata(props: {
     }
 }
 
-import { GridSkeleton } from "@/components/skeleton";
+import { VideoSkeleton } from "@/components/skeleton";
 
 export default async function App(props:
     {
@@ -20,7 +20,7 @@ export default async function App(props:
     }) {
     const appInfo = await props.params;
     return (
-        <Suspense fallback={<GridSkeleton />}>
+        <Suspense fallback={<VideoSkeleton />}>
             <TabContent id={appInfo.id} tab={"video"} />
         </Suspense>
     );

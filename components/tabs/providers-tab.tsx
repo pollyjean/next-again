@@ -5,10 +5,10 @@ import { Suspense } from "react";
 
 export default async function ProvidersTab({ id }: { id: string }) {
     const content = await getApiData(`${API_URL}/${id}/providers`);
-    const krProviders = content.results?.KR;
+    const usProviders = content.US;
 
-    if (!krProviders) {
-        return <div className="p-8 text-center text-gray-400">No providers available in Korea.</div>;
+    if (!usProviders) {
+        return <div className="p-8 text-center text-gray-400">No providers available in United States.</div>;
     }
 
     const renderProviderSection = (title: string, providers: any[]) => {
@@ -18,7 +18,14 @@ export default async function ProvidersTab({ id }: { id: string }) {
                 <h3 className="text-xl font-bold text-white mb-4 border-l-4 border-yellow-500 pl-3">{title}</h3>
                 <div className="flex flex-wrap gap-4">
                     {providers.map((provider: any) => (
-                        <div key={provider.provider_id} className="flex flex-col items-center gap-2 w-20">
+                        <a
+                            key={provider.provider_id}
+                            href={usProviders.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex flex-col items-center gap-2 w-20 hover:opacity-80 transition-opacity"
+                            title={provider.provider_name}
+                        >
                             <img
                                 src={`https://image.tmdb.org/t/p/w300${provider.logo_path}`}
                                 alt={provider.provider_name}
@@ -26,7 +33,7 @@ export default async function ProvidersTab({ id }: { id: string }) {
                                 className="w-12 h-12 rounded-lg"
                             />
                             <span className="text-xs text-center text-gray-400 truncate w-full">{provider.provider_name}</span>
-                        </div>
+                        </a>
                     ))}
                 </div>
             </div>
@@ -35,9 +42,9 @@ export default async function ProvidersTab({ id }: { id: string }) {
 
     return (
         <div className="max-w-6xl mx-auto my-12 px-4">
-            {renderProviderSection("Stream", krProviders.flatrate)}
-            {renderProviderSection("Rent", krProviders.rent)}
-            {renderProviderSection("Buy", krProviders.buy)}
+            {renderProviderSection("Stream", usProviders.flatrate)}
+            {renderProviderSection("Rent", usProviders.rent)}
+            {renderProviderSection("Buy", usProviders.buy)}
         </div>
     );
 }

@@ -1,6 +1,7 @@
 import { API_URL } from "@/lib/constant";
 import { Suspense } from "react";
 import { getApiData } from "@/lib/getApiData";
+import { IconSkeleton } from "@/components/skeleton";
 import TabContent from "@/components/tab-content";
 
 export async function generateMetadata(props: {
@@ -12,7 +13,6 @@ export async function generateMetadata(props: {
     }
 }
 
-import { GridSkeleton } from "@/components/skeleton";
 
 export default async function ProvidersPage(props:
     {
@@ -20,7 +20,7 @@ export default async function ProvidersPage(props:
     }) {
     const appInfo = await props.params;
     return (
-        <Suspense fallback={<GridSkeleton />}>
+        <Suspense fallback={<IconSkeleton />}>
             <TabContent id={appInfo.id} tab={"providers"} />
         </Suspense>
     );
