@@ -9,7 +9,6 @@ export default function ScrollToTop() {
 
     useEffect(() => {
         const prevPath = prevPathRef.current;
-        console.log(prevPath);
         const currPath = pathname;
 
         // Extract ID from paths: /content/123...
