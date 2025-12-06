@@ -1,10 +1,10 @@
-
 import { API_URL } from "@/lib/constant";
 import { getApiData } from "@/lib/getApiData";
-import { Suspense } from "react";
+
+import { IProvidersResponse } from "@/types/tmdb";
 
 export default async function ProvidersTab({ id }: { id: string }) {
-    const content = await getApiData(`${API_URL}/${id}/providers`);
+    const content = await getApiData<IProvidersResponse>(`${API_URL}/${id}/providers`);
     const usProviders = content.US;
 
     if (!usProviders) {

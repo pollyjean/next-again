@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { API_URL } from "@/lib/constant";
 import { getApiData } from "@/lib/getApiData";
-import { Suspense } from "react";
+
+import { IMovie } from "@/types/tmdb";
 
 export default async function SimilarTab({ id }: { id: string }) {
-    const content = await getApiData(`${API_URL}/${id}/similar`);
+    const content = await getApiData<IMovie[]>(`${API_URL}/${id}/similar`);
 
     return (
         <div className="max-w-6xl mx-auto my-12 px-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">

@@ -1,11 +1,11 @@
-
 import { API_URL } from "@/lib/constant";
 import { getApiData } from "@/lib/getApiData";
 import { Suspense } from "react";
 import { Skeleton } from "@/components/skeleton";
+import { IVideo } from "@/types/tmdb";
 
 export default async function VideoTab({ id }: { id: string }) {
-    const content = await getApiData(`${API_URL}/${id}/videos`);
+    const content = await getApiData<IVideo[]>(`${API_URL}/${id}/videos`);
 
     if (!content || content.length === 0) {
         return <div className="text-center my-20 text-gray-400 text-lg pb-10">No related videos found.</div>;

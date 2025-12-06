@@ -1,10 +1,10 @@
 import Link from "next/link";
 import Navigation from "../components/navigation";
 import "./globals.css";
+import ScrollToTop from "@/components/scroll-to-top";
 import { SITE_NAME, SITE_DESCRIPTION } from "@/lib/constant";
 import { Metadata } from "next";
 
-// metadata other fields example : https://nextjs.org/docs/app/api-reference/functions/generate-metadata#other-fields
 export const metadata: Metadata = {
     title: {
         template: '%s | ' + SITE_NAME,
@@ -12,8 +12,6 @@ export const metadata: Metadata = {
     },
     description: SITE_DESCRIPTION,
 }
-
-import ScrollToTop from "@/components/scroll-to-top";
 
 export default function RootLayout({
     children,
@@ -29,7 +27,7 @@ export default function RootLayout({
                         <h1 className="text-3xl font-bold tracking-tight">
                             <Link href="/" className="flex items-center gap-2 group">
                                 <div className="absolute inset-0 bg-white/5 blur-2xl -z-10 rounded-full" />
-                                <img src="/assets/images/logo.png" alt={SITE_NAME} className="h-20 w-auto object-contain mix-blend-screen rounded-full drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] opacity-80" />
+                                <img src="/assets/images/logo.png" alt={SITE_NAME} className="h-20 w-auto object-contain mix-blend-screen rounded-full drop-shadow-[0_0_10px_rgba(255,255,255,0.3)] opacity-80" />
                                 <span className="sr-only">{SITE_NAME}</span>
                             </Link>
                         </h1>

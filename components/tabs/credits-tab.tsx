@@ -1,9 +1,10 @@
-
 import { API_URL } from "@/lib/constant";
 import { getApiData } from "@/lib/getApiData";
 
+import { ICredit } from "@/types/tmdb";
+
 export default async function CreditsTab({ id }: { id: string }) {
-    const contents = await getApiData(`${API_URL}/${id}/credits`);
+    const contents = await getApiData<ICredit[]>(`${API_URL}/${id}/credits`);
 
     return (
         <div className="max-w-6xl mx-auto my-12 px-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">

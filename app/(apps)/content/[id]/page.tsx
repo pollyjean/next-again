@@ -3,14 +3,13 @@ import { Suspense } from "react";
 import { getApiData } from "@/lib/getApiData";
 import TabContent from "@/components/tab-content";
 
+import { getMetadata } from "@/lib/metadata";
+
 export async function generateMetadata(props: {
     params: Promise<{ id: string }>
 }) {
     const { id } = await props.params;
-    const { title } = await getApiData(`${API_URL}/${id}`);
-    return {
-        title: title,
-    }
+    return getMetadata(id);
 }
 
 import { VideoSkeleton } from "@/components/skeleton";

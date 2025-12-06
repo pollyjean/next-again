@@ -1,13 +1,14 @@
 import { API_URL } from "@/lib/constant";
 import AppInfo from '@/components/app-info';
 import { getApiData } from '@/lib/getApiData';
+import { IMovie } from '@/types/tmdb';
 
 export const metadata = {
     title: 'Home'
 }
 
 export default async function Home() {
-    const apps = await getApiData(API_URL);
+    const apps = await getApiData<IMovie[]>(API_URL);
     const randomApp = apps[Math.floor(Math.random() * apps.length)];
 
     return (

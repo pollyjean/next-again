@@ -5,6 +5,8 @@ import { Skeleton } from "@/components/skeleton";
 import { API_URL } from "@/lib/constant";
 import { getApiData } from "@/lib/getApiData";
 
+import { IMovie } from "@/types/tmdb";
+
 export default async function AppLayout({
     children,
     params,
@@ -13,7 +15,7 @@ export default async function AppLayout({
     params: Promise<{ id: string }>;
 }) {
     const { id } = await params;
-    const similar = await getApiData(`${API_URL}/${id}/similar`);
+    const similar = await getApiData<IMovie[]>(`${API_URL}/${id}/similar`);
     const hasSimilar = similar.length > 0;
 
     return (

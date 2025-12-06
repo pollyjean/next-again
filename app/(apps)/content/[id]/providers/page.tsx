@@ -4,15 +4,14 @@ import { getApiData } from "@/lib/getApiData";
 import { IconSkeleton } from "@/components/skeleton";
 import TabContent from "@/components/tab-content";
 
+import { getMetadata } from "@/lib/metadata";
+
 export async function generateMetadata(props: {
     params: Promise<{ id: string }>
 }) {
     const { id } = await props.params;
-    return {
-        title: getApiData(`${API_URL}/${id}`),
-    }
+    return getMetadata(id);
 }
-
 
 export default async function ProvidersPage(props:
     {
