@@ -25,7 +25,10 @@ export default function ScrollToTop() {
             // Tab switch - do nothing
         } else {
             // Different content or logic, scroll to top
-            window.scrollTo({ top: 0, behavior: "smooth" });
+            // Use setTimeout to ensure it runs after render/paint loop
+            setTimeout(() => {
+                window.scrollTo({ top: 0, behavior: "instant" });
+            }, 10);
         }
 
         prevPathRef.current = currPath;
