@@ -12,6 +12,7 @@ export default function Navigation() {
                     <Link
                         href="/"
                         className={`text-lg font-medium transition-colors hover:text-white drop-shadow-md ${path === '/' ? 'text-white' : 'text-gray-300'}`}
+                        prefetch={true}
                     >
                         Contents
                     </Link>
@@ -20,6 +21,7 @@ export default function Navigation() {
                     <Link
                         href="/about-us"
                         className={`text-lg font-medium transition-colors hover:text-white drop-shadow-md ${path === '/about-us' ? 'text-white' : 'text-gray-300'}`}
+                        prefetch={true}
                     >
                         About
                     </Link>

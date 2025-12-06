@@ -11,7 +11,7 @@ interface IAppInfoProps {
 export default function AppInfo({ title, id, poster_path, vote_average, release_date }: IAppInfoProps) {
 
     return (
-        <Link href={`/content/${id}`} className="block group perspective-1000">
+        <Link href={`/content/${id}`} className="block group perspective-1000" prefetch={true}>
             <div className={`relative w-full aspect-2/3 transition-transform duration-500 transform-style-3d group-hover:rotate-y-180`}>
                 {/* Front Face: Poster */}
                 <div className="absolute inset-0 w-full h-full backface-hidden rounded-xl overflow-hidden shadow-lg border border-gray-800">

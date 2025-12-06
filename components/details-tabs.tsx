@@ -36,6 +36,7 @@ export default function DetailsTabs({ id, hasSimilar }: { id: string, hasSimilar
                             ? "border-white text-white"
                             : "border-transparent text-gray-400 hover:text-gray-200 hover:border-gray-700"
                             }`}
+                        prefetch={true}
                     >
                         {t.name}
                     </Link>
