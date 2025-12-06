@@ -19,8 +19,8 @@ export default function Navigation() {
                 </li>
                 <li>
                     <Link
-                        href="/about-us"
-                        className={`text-lg font-medium transition-colors hover:text-white drop-shadow-md ${path === '/about-us' ? 'text-white' : 'text-gray-300'}`}
+                        href="/about"
+                        className={`text-lg font-medium transition-colors hover:text-white drop-shadow-md ${path === '/about' ? 'text-white' : 'text-gray-300'}`}
                         prefetch={true}
                     >
                         About

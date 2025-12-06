@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-interface IAppInfoProps {
+interface IContentCardProps {
     title: string;
     id: string;
     poster_path: string;
@@ -8,7 +8,7 @@ interface IAppInfoProps {
     release_date: string;
 }
 
-export default function AppInfo({ title, id, poster_path, vote_average, release_date }: IAppInfoProps) {
+export default function ContentCard({ title, id, poster_path, vote_average, release_date }: IContentCardProps) {
 
     return (
         <Link href={`/content/${id}`} className="block group perspective-1000" prefetch={true}>

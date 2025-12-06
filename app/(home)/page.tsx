@@ -1,5 +1,5 @@
 import { API_URL } from "@/lib/constant";
-import AppInfo from '@/components/app-info';
+import ContentCard from '@/components/content-card';
 import { getApiData } from '@/lib/getApiData';
 import { IMovie } from '@/types/tmdb';
 
@@ -28,10 +28,10 @@ export default async function Home() {
             )}
 
             <div className="container mx-auto px-4 py-8 pt-32">
-                <h2 className="text-3xl font-bold mb-8 text-white">Trending Now</h2>
+                <h2 className="text-3xl font-bold mb-8 text-white">Trending Contents</h2>
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-                    {apps.map((app: any) => (
-                        <AppInfo
+                    {apps.map((app: IMovie) => (
+                        <ContentCard
                             key={app.id}
                             id={String(app.id)}
                             title={app.title}

@@ -2,7 +2,7 @@ import { API_URL } from "@/lib/constant";
 import { getApiData } from "@/lib/getApiData";
 import { IMovieDetail } from "@/types/tmdb";
 
-export default async function AppDetails({ id }: { id: string }) {
+export default async function ContentInfo({ id }: { id: string }) {
     const video = await getApiData<IMovieDetail>(`${API_URL}/${id}`);
     return (
         <div className="relative">

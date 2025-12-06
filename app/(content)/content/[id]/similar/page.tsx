@@ -1,6 +1,7 @@
 import { API_URL } from "@/lib/constant";
 import { Suspense } from "react";
 import { getApiData } from "@/lib/getApiData";
+import { GridSkeleton } from "@/components/skeleton";
 import TabContent from "@/components/tab-content";
 
 import { getMetadata } from "@/lib/metadata";
@@ -12,16 +13,14 @@ export async function generateMetadata(props: {
     return getMetadata(id);
 }
 
-import { VideoSkeleton } from "@/components/skeleton";
-
-export default async function App(props:
+export default async function SimilarPage(props:
     {
         params: Promise<{ id: string }>
     }) {
-    const appInfo = await props.params;
+    const contentInfo = await props.params;
     return (
-        <Suspense fallback={<VideoSkeleton />}>
-            <TabContent id={appInfo.id} tab={"video"} />
+        <Suspense fallback={<GridSkeleton />}>
+            <TabContent id={contentInfo.id} tab={"similar"} />
         </Suspense>
     );
 }

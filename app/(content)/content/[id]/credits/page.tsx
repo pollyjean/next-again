@@ -1,7 +1,7 @@
 import { API_URL } from "@/lib/constant";
 import { Suspense } from "react";
 import { getApiData } from "@/lib/getApiData";
-import { IconSkeleton } from "@/components/skeleton";
+import { GridSkeleton } from "@/components/skeleton";
 import TabContent from "@/components/tab-content";
 
 import { getMetadata } from "@/lib/metadata";
@@ -13,14 +13,14 @@ export async function generateMetadata(props: {
     return getMetadata(id);
 }
 
-export default async function ProvidersPage(props:
+export default async function CreditsPage(props:
     {
         params: Promise<{ id: string }>
     }) {
-    const appInfo = await props.params;
+    const contentInfo = await props.params;
     return (
-        <Suspense fallback={<IconSkeleton />}>
-            <TabContent id={appInfo.id} tab={"providers"} />
+        <Suspense fallback={<GridSkeleton />}>
+            <TabContent id={contentInfo.id} tab={"credits"} />
         </Suspense>
     );
 }
